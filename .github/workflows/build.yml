@@ -31,8 +31,11 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
+      - name: Define test script temporarily
+        run: |
+          jq '.scripts.test="jasmine"' package.json > temp.json && mv temp.json package.json
 
       - name: Testing on OS (${{ matrix.os }}) with Node.js (version ${{ matrix.node-version }}) attempt ${{ matrix.attempt }}
         run: |
           echo "Run attempt: ${{ matrix.attempt }}"
-          npm ttest
+          npm test
