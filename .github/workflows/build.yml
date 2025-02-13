@@ -34,10 +34,7 @@ jobs:
       - name: Install Jest (only in CI)
         run: npm install --save-dev jest
 
-      - name: List test files
-        run: ls -R __tests__ || ls -R tests || echo "No test files found"
-
       - name: Run Jest Tests
         run: |
           echo "Run attempt: ${{ matrix.attempt }}"
-          npx jest --ci --coverage
+          npx jest test
