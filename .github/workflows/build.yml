@@ -31,10 +31,7 @@ jobs:
       - name: Install dependencies
         run: npm install --force
 
-      - name: Install Jest (only in CI)
-        run: npm install --save-dev jest
-
       - name: Run Jest Tests
         run: |
           echo "Run attempt: ${{ matrix.attempt }}"
-          npx jest test
+          npx gulp test
